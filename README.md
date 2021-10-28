@@ -1,4 +1,7 @@
 # DropDownBox - How to add tags to the field
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/422028482/)**
+<!-- run online end -->
 
 This example demonstrates how to add tags to DropDownBox's field.
 
