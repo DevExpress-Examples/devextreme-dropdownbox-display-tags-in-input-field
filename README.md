@@ -4,9 +4,6 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 # DropDownBox - How to add tags to the field
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/422028482/)**
-<!-- run online end -->
 
 This example demonstrates how to add tags to DropDownBox's field.
 
