@@ -1,4 +1,4 @@
-# jQuery
+# DevExtreme jQuery DropDownBox - How to display tags in the input field
 
 ## Installation
 
