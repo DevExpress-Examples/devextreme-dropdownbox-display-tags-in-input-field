@@ -1,7 +1,7 @@
 $(function(){
     var treeView;
     
-    var syncTreeViewSelection = function(treeView, value){
+    const syncTreeViewSelection = function(treeView, value){
         if (!treeView) return;
       
         treeView.unselectAll();
@@ -13,7 +13,7 @@ $(function(){
         }
     };
     
-    var makeAsyncDataSource = function(jsonFile){
+    const makeAsyncDataSource = function(jsonFile){
         return new DevExpress.data.CustomStore({
             loadMode: "raw",
             key: "ID",
@@ -23,9 +23,9 @@ $(function(){
         });
     };
 
-    var dataSource = makeAsyncDataSource("treeProducts.json");
+    const dataSource = makeAsyncDataSource("treeProducts.json");
   
-    var dropDownBox = $("#treeBox").dxDropDownBox({
+    const dropDownBox = $("#treeBox").dxDropDownBox({
         value: ["1_1"],
         valueExpr: "ID",
         displayExpr: "name",
@@ -33,39 +33,39 @@ $(function(){
         fieldTemplate: function(value, fieldElement) {
             $("<div>").dxTagBox({
                 dataSource: dataSource,
-                value: value,
                 valueExpr: "ID",
                 displayExpr: "name",
-                showClearButton: true,
-                placeholder: value.length ? "" : "Select a value...",
-                openOnFieldClick: false,
-                width: "100%",
+                value: value,
                 onValueChanged: function (e) {
                     dropDownBox.option("value", e.value);
                     syncTreeViewSelection(treeView, e.value)
                 },
+                showClearButton: true,
+                placeholder: value.length ? "" : "Select a value...",
+                openOnFieldClick: false,
+                width: "100%"
             }).appendTo(fieldElement);
         },
         contentTemplate: function(e){
-            var value = e.component.option("value"),
-                $treeView = $("<div>").dxTreeView({
-                    dataSource: e.component.getDataSource(),
-                    dataStructure: "plain",
-                    keyExpr: "ID",
-                    parentIdExpr: "categoryId",
-                    selectionMode: "multiple",
-                    displayExpr: "name",
-                    selectByClick: true,
-                    onContentReady: function(args){
-                        syncTreeViewSelection(args.component, value);
-                    },
-                    selectNodesRecursive: false,
-                    showCheckBoxesMode: "normal",
-                    onItemSelectionChanged: function(args){
-                        var selectedKeys = args.component.getSelectedNodeKeys();
-                        e.component.option("value", selectedKeys);
-                    }
-                });
+            const $treeView = $("<div>").dxTreeView({
+                dataSource: dataSource,
+                dataStructure: "plain",
+                keyExpr: "ID",
+                parentIdExpr: "categoryId",
+                selectionMode: "multiple",
+                displayExpr: "name",
+                selectByClick: true,
+                onContentReady: function(args){
+                    const value = e.component.option("value")
+                    syncTreeViewSelection(args.component, value);
+                },
+                selectNodesRecursive: false,
+                showCheckBoxesMode: "normal",
+                onItemSelectionChanged: function(args){
+                    const selectedKeys = args.component.getSelectedNodeKeys();
+                    e.component.option("value", selectedKeys);
+                }
+            });
             
             treeView = $treeView.dxTreeView("instance");
            
