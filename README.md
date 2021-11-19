@@ -18,28 +18,28 @@ You can find detailed instructions in the following help topic: [DropDownBox - S
 1. **Integrate the TagBox with the DropDownBox**        
 Configure the TagBox in the DropDownBox's [fieldTemplate](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#fieldTemplate). Bind the TagBox to the same [dataSource](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#dataSource) used by the DropDownBox and TreeView and specify the [valueExpr](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#valueExpr) and [displayExpr](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#displayExpr) properties. Set the TagBox's [value](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#value) to be the **value** of the DropDownBox and implement the [onValueChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#onValueChanged) event handler to synchronize the TagBox with the rest of the components. Other TagBox properties shown in the code below are optional.
 
-```js
-const dropDownBox = $("#treeBox").dxDropDownBox({
-    value: ["1_1"],
-    valueExpr: "ID",
-    displayExpr: "name",
-    dataSource: dataSource,
-    fieldTemplate: function(value, fieldElement) {
-        $("<div>").dxTagBox({
-            dataSource: dataSource,
-            valueExpr: "ID",
-            displayExpr: "name",
-            value: value,
-            onValueChanged: function (e) {
-                dropDownBox.option("value", e.value);
-                syncTreeViewSelection(treeView, e.value)
-            },
-            showClearButton: true,
-            placeholder: value.length ? "" : "Select a value...",
-            openOnFieldClick: false,
-            width: "100%"
-        }).appendTo(fieldElement);
-    },
-    // ...
-}).dxDropDownBox("instance");
-```
+    ```js
+    const dropDownBox = $("#treeBox").dxDropDownBox({
+        value: ["1_1"],
+        valueExpr: "ID",
+        displayExpr: "name",
+        dataSource: dataSource,
+        fieldTemplate: function(value, fieldElement) {
+            $("<div>").dxTagBox({
+                dataSource: dataSource,
+                valueExpr: "ID",
+                displayExpr: "name",
+                value: value,
+                onValueChanged: function (e) {
+                    dropDownBox.option("value", e.value);
+                    syncTreeViewSelection(treeView, e.value)
+                },
+                showClearButton: true,
+                placeholder: value.length ? "" : "Select a value...",
+                openOnFieldClick: false,
+                width: "100%"
+            }).appendTo(fieldElement);
+        },
+        // ...
+    }).dxDropDownBox("instance");
+    ```
