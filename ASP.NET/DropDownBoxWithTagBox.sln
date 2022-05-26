@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropDownBoxWithTagBox", "DropDownBoxWithTagBox.csproj", "{2FA32C93-7E31-4FE5-A1C2-6F3FF2700FD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FA32C93-7E31-4FE5-A1C2-6F3FF2700FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA32C93-7E31-4FE5-A1C2-6F3FF2700FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA32C93-7E31-4FE5-A1C2-6F3FF2700FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA32C93-7E31-4FE5-A1C2-6F3FF2700FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54FE6E0B-2239-47A9-AF08-036DDCC7405A}
+	EndGlobalSection
+EndGlobal
