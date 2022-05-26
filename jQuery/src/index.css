@@ -1,3 +1,13 @@
-#form  .dx-fieldset {
+#form .dx-fieldset {
     height: 500px;
-}
+  }
+  
+  .dx-field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dx-dropdowneditor-input-wrapper.dx-selectbox-container {
+    width: 100%;
+  }
+  
