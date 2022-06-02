@@ -8,6 +8,11 @@ import TagBox from "devextreme-react/tag-box";
 import TextBox from "devextreme-react/text-box";
 import CustomStore from "devextreme/data/custom_store";
 import "whatwg-fetch";
+import Popup from "devextreme/ui/popup";
+
+const dropDownBoxAttributes = {
+  id: "myDropDownBox"
+};
 
 const treeDataSource = new CustomStore({
   loadMode: "raw",
@@ -79,6 +84,11 @@ export default function App() {
       });
     }
     treeViewInstance.customSelection = false;
+
+    var popup = Popup.getInstance(
+      document.querySelector("#myDropDownBox .dx-dropdowneditor-overlay")
+    );
+    setTimeout(() => popup.repaint());
   }, [treeView, treeBoxValue]);
 
   return (
@@ -87,6 +97,7 @@ export default function App() {
         <div className="dx-field-label">DropDownBox with embedded TreeView</div>
         <div className="dx-field-value">
           <DropDownBox
+            elementAttr={dropDownBoxAttributes}
             deferRendering={false}
             value={treeBoxValue}
             valueExpr="ID"
