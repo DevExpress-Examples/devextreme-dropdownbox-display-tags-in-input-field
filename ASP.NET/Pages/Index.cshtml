@@ -1,0 +1,118 @@
+@page
+@using DropDownBoxWithTagBox.Models
+
+<h2>Home</h2>
+
+<div class="dx-fieldset">
+    <div class="dx-field">
+        <div class="dx-field-label">DropDownBox with embedded TreeView</div>
+        <div class="dx-field-value">
+            @(Html.DevExtreme().DropDownBox()
+                .ID("dropDownBox")
+                .Value(new[] { "1_1" })
+                .ValueExpr("ID")
+                .DisplayExpr("Text")
+                .DataSource(d => d.Mvc()
+                    .Controller("TreeViewPlainData")
+                    .LoadAction("Get")
+                    .LoadMode(DataSourceLoadMode.Raw)
+                    .Key("ID")
+                )
+                .FieldTemplate(new TemplateName("tagBox_template"))
+                .ContentTemplate(new TemplateName("treeView_template"))
+                .DropDownOptions(o =>
+                {
+                    o.OnInitialized(@<text> function(e) { popup = e.component; } </text>);
+                })
+                .OnInitialized(@<text>function(e) { dropDownBox = e.component; }</text>)
+                .OnOpened(@<text>
+                    function(e) {
+                        syncTreeViewSelection(treeView, e.component.option("value"));
+                    }
+                </text>)
+            )
+        </div>
+    </div>
+</div>
+
+
+@using (Html.DevExtreme().NamedTemplate("tagBox_template"))
+{
+    @(Html.DevExtreme().TextBox()
+        .Visible(false)
+    )
+    @(Html.DevExtreme().TagBox()
+        .ID("tagBox")
+        .DataSource(new JS("dropDownBox.getDataSource()"))
+        .Value(new JS("dropDownBox.option('value')"))
+        .ValueExpr("ID")
+        .DisplayExpr("Text")
+        .ShowClearButton(true)
+        .Placeholder("Select a value...")
+        .OpenOnFieldClick(false)
+        .Width("100%")
+        .OnValueChanged(@<text>
+            function(e) {
+                dropDownBox.option("value", e.value);
+                syncTreeViewSelection(treeView, e.value);
+                popup.repaint();
+            }
+        </text>)
+    )
+}
+
+@using (Html.DevExtreme().NamedTemplate("treeView_template"))
+{
+    @(Html.DevExtreme().TreeView()
+        .DataSource(new JS(@"component.getDataSource()"))
+        .KeyExpr("ID")
+        .DisplayExpr("Text")
+        .ExpandedExpr("Expanded")
+        .ParentIdExpr("CategoryId")
+        .DataStructure(TreeViewDataStructure.Plain)
+        .SelectionMode(NavSelectionMode.Multiple)
+        .ShowCheckBoxesMode(TreeViewCheckBoxMode.Normal)
+        .SelectNodesRecursive(false)
+        .SelectByClick(true)
+        .Height(235)
+        .ShowCheckBoxesMode(TreeViewCheckBoxMode.Normal)
+        .OnInitialized(@<text>function(e) { treeView = e.component; }</text>)
+        .OnItemSelectionChanged(@<text>
+            function(args) {
+                component.option("value", args.component.getSelectedNodeKeys());
+                popup.repaint();
+            }
+        </text>)
+        .OnContentReady(@<text>
+            function(args) {
+                syncTreeViewSelection(args.component, component.option("value"));
+            }
+        </text>)
+    )
+}
+
+
+@(Html.DevExtreme().Button()
+    .Text("Set Value")
+    .OnClick(@<text>
+        function() { dropDownBox.option("value", [ "1_1_1" ]); }
+    </text>)
+)
+
+<script>
+    let dropDownBox,
+        treeView,
+        popup;
+
+    function syncTreeViewSelection(treeView, value) {
+        if (!treeView) return;
+
+        treeView.unselectAll();
+
+        if (value.length > 0) {
+            value.forEach(item => {
+                treeView.selectItem(item);
+            })
+        }
+    }
+</script>
