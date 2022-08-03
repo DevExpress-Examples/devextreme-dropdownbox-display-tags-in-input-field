@@ -1,0 +1,19 @@
+{
+  "name": "vue-project",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5050"
+  },
+  "dependencies": {
+    "devextreme": "21.1.5",
+    "devextreme-vue": "21.1.5",
+    "vue": "3.2.37",
+    "whatwg-fetch": "3.6.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.2",
+    "vite": "^2.8.4"
+  }
+}
