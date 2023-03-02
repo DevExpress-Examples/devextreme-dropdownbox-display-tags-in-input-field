@@ -44,3 +44,23 @@ Configure the TagBox in the DropDownBox's [fieldTemplate](https://js.devexpress.
         // ...
     }).dxDropDownBox("instance");
     ```
+    
+    ## Files to Review
+
+- **Angular**
+    - [app.component.html](Angular/src/app/app.component.html)
+    - [app.component.ts](Angular/src/app/app.component.ts)
+- **jQuery**
+    - [index.js](jQuery/src/index.js)
+- **React**
+    - [App.js](React/src/App.js)
+- **Vue**
+    - [App.vue](Vue/src/App.vue)
+- **ASP.Net**    
+    - [Index.cshtml](ASP.NET/Pages/Index.cshtml)
+
+## Documentation
+
+- [Getting Started with DropDownBox](https://js.devexpress.com/Documentation/Guide/UI_Components/DropDownBox/Getting_Started_with_DropDownBox/)
+
+- [DropDownBox - API Reference](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDropDownBox/)
