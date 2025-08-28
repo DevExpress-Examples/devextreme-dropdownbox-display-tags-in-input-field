@@ -58,7 +58,7 @@ Configure the TagBox in the DropDownBox's [fieldTemplate](https://js.devexpress.
 - **Vue**
     - [App.vue](Vue/src/App.vue)
 - **ASP.Net**    
-    - [Index.cshtml](ASP.NET/Pages/Index.cshtml)
+    - [Index.cshtml](ASP.NET%20Core/Pages/Index.cshtml)
 
 ## Documentation
 
