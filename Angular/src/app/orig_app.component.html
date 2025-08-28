@@ -1,0 +1,49 @@
+<div class="dx-fieldset">
+  <div class="dx-field">
+    <div class="dx-field-label">DropDownBox with embedded TreeView</div>
+    <div class="dx-field-value">
+      <dx-drop-down-box
+        ID="myDropDownBox"
+        [(value)]="treeBoxValue"
+        valueExpr="ID"
+        displayExpr="name"
+        [dataSource]="treeDataSource"
+        (onValueChanged)="onDropDownBoxValueChanged($event)"
+        fieldTemplate="fieldTemplate"
+        [showClearButton]="true"
+      >
+        <div *dxTemplate="let info of 'fieldTemplate'">
+          <dx-text-box [visible]="false"></dx-text-box>
+          <dx-tag-box
+            [dataSource]="treeDataSource"
+            [(value)]="treeBoxValue"
+            valueExpr="ID"
+            displayExpr="name"
+            placeholder="Select a value..."
+            [openOnFieldClick]="false"
+            width="100%"
+            (onValueChanged)="onTagBoxValueChanged($event)"
+          >
+          </dx-tag-box>
+        </div> 
+        <div *dxTemplate="let data of 'content'">
+          <dx-tree-view
+          #treeView
+            [dataSource]="treeDataSource"
+            dataStructure="plain"
+            keyExpr="ID"
+            parentIdExpr="categoryId"
+            selectionMode="multiple"
+            showCheckBoxesMode="normal"
+            [selectNodesRecursive]="false"
+            displayExpr="name"
+            [selectByClick]="true"
+            (onContentReady)="onTreeViewReady($event)"
+            (onItemSelectionChanged)="onTreeViewSelectionChanged($event)"
+            >
+          </dx-tree-view>
+        </div>
+      </dx-drop-down-box>
+    </div>
+  </div>
+</div>
