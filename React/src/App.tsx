@@ -4,10 +4,9 @@ import {
 import './App.css';
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
 import DropDownBox from 'devextreme-react/drop-down-box';
-import TreeView from 'devextreme-react/tree-view';
-import TagBox from 'devextreme-react/tag-box';
+import TreeView, { type TreeViewTypes, type TreeViewRef } from 'devextreme-react/tree-view';
+import TagBox, { type TagBoxTypes } from 'devextreme-react/tag-box';
 import CustomStore from 'devextreme/data/custom_store';
-import type { TreeViewRef } from 'devextreme-react/tree-view';
 
 function makeAsyncDataSource(jsonFile: string): CustomStore {
   return new CustomStore({
@@ -39,17 +38,17 @@ function App(): JSX.Element {
     }
   }, []);
 
-  const onTreeViewContentReady = useCallback((e: any) => {
+  const onTreeViewContentReady = useCallback((e: TreeViewTypes.ContentReadyEvent) => {
     const treeViewInstance = e.component;
     syncTreeViewSelection(treeViewInstance, selectedValues);
   }, [selectedValues, syncTreeViewSelection]);
 
-  const onTreeViewSelectionChanged = useCallback((e: any) => {
+  const onTreeViewSelectionChanged = useCallback((e: TreeViewTypes.ItemSelectionChangedEvent) => {
     const selectedKeys = e.component.getSelectedNodeKeys();
     setSelectedValues(selectedKeys);
   }, []);
 
-  const onTagBoxValueChanged = useCallback((e: any) => {
+  const onTagBoxValueChanged = useCallback((e: TagBoxTypes.ValueChangedEvent) => {
     setSelectedValues(e.value);
     const treeViewInstance = treeViewRef.current?.instance();
     syncTreeViewSelection(treeViewInstance, e.value);

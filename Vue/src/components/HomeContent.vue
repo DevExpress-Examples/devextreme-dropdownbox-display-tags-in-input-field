@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
-import DxDropDownBox from 'devextreme-vue/drop-down-box';
-import DxTreeView from 'devextreme-vue/tree-view';
-import DxTagBox from 'devextreme-vue/tag-box';
+import DxDropDownBox, { type DxDropDownBoxTypes, type DxDropDownBox as DxDropDownBoxType } from 'devextreme-vue/drop-down-box';
+import DxTagBox, { type DxTagBoxTypes } from 'devextreme-vue/tag-box';
 import DxTextBox from 'devextreme-vue/text-box';
-import type { DxTreeView as DxTreeViewType } from 'devextreme-vue/tree-view';
-import type { DxDropDownBox as DxDropDownBoxType } from 'devextreme-vue/drop-down-box';
+import DxTreeView, { type DxTreeView as DxTreeViewType, type DxTreeViewTypes } from 'devextreme-vue/tree-view';
 import CustomStore from 'devextreme/data/custom_store';
 
 const treeViewRef = ref<DxTreeViewType | null>(null);
@@ -38,11 +36,11 @@ const syncTreeViewSelection = (treeViewInstance: any, value: string[]): void => 
   }
 };
 
-function onDropDownBoxInitialized(e: any): void {
+function onDropDownBoxInitialized(e: DxDropDownBoxTypes.InitializedEvent): void {
   popup = e.component;
 }
 
-function onTagBoxValueChanged(e: any): void {
+function onTagBoxValueChanged(e: DxTagBoxTypes.ValueChangedEvent): void {
   treeBoxValue.value = e.value;
 
   if (dropDownBoxRef.value?.instance) {
@@ -59,12 +57,12 @@ function onTagBoxValueChanged(e: any): void {
   }
 }
 
-function onTreeViewContentReady(e: any): void {
+function onTreeViewContentReady(e: DxTreeViewTypes.ContentReadyEvent): void {
   const value = (dropDownBoxRef.value?.instance?.option('value')) || treeBoxValue.value;
   syncTreeViewSelection(e.component, value);
 }
 
-function onTreeViewItemSelectionChanged(e: any): void {
+function onTreeViewItemSelectionChanged(e: DxTreeViewTypes.ItemSelectionChangedEvent): void {
   const selectedKeys = e.component.getSelectedNodeKeys();
   treeBoxValue.value = selectedKeys;
 
