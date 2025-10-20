@@ -3,7 +3,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import CustomStore from 'devextreme/data/custom_store';
 import { DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
 import Popup from 'devextreme/ui/popup';
