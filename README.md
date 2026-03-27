@@ -6,7 +6,7 @@
 <!-- default badges end -->
 # DropDownBox for DevExtreme - Display Tags in the Input Field
 
-**IMPORTANT:** Starting with v25.2, **DropDownBox**.[fieldTemplate](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#fieldTemplate) is deprecated.
+**IMPORTANT:** The **DropDownBox**.[fieldTemplate](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#fieldTemplate) property is deprecated starting with v25.2.
 
 This example uses the [DevExtreme TagBox](https://js.devexpress.com/Documentation/Guide/UI_Components/TagBox/Getting_Started_with_TagBox/) component to display tags in the DevExtreme DropDownBox's input field. The [DevExtreme TreeView](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeView/Getting_Started_with_TreeView/) component is used to create a hierarchical view in the drop-down field.
 
