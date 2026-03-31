@@ -4,15 +4,15 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-# DropDownBox for DevExtreme - Display Tags in the Input Field
+# DevExtreme DropDownBox - Display Tags in the Input Field
 
 **IMPORTANT:** The **DropDownBox**.[fieldTemplate](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#fieldTemplate) property is deprecated starting with v25.2.
 
-This example uses the [DevExtreme TagBox](https://js.devexpress.com/Documentation/Guide/UI_Components/TagBox/Getting_Started_with_TagBox/) component to display tags in the DevExtreme DropDownBox's input field. The [DevExtreme TreeView](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeView/Getting_Started_with_TreeView/) component is used to create a hierarchical view in the drop-down field.
+This example uses the [DevExtreme TagBox](https://js.devexpress.com/Documentation/Guide/UI_Components/TagBox/Getting_Started_with_TagBox/) component to display tags in the input field of a DevExtreme DropDownBox. The [DevExtreme TreeView](https://js.devexpress.com/Documentation/Guide/UI_Components/TreeView/Getting_Started_with_TreeView/) component is used to create a hierarchical view in the drop-down window.
 
 <div align="center"><img alt="DropDownBox with integrated TagBox and TreeView" src="https://user-images.githubusercontent.com/18551316/142602619-b41ca373-fa29-4c42-8c6c-ed6cba9a499f.png" /></div>
 
-**NOTE:** If you do not need a complex UI in the drop-down field, but still want to display tags, try a standalone TagBox component. You can refer to the [Getting Started with TagBox](https://js.devexpress.com/Documentation/Guide/UI_Components/TagBox/Getting_Started_with_TagBox/) article to find out if the TagBox is the choice for you.
+**NOTE:** If you do not need a complex UI in the drop-down window, but still want to display tags, try a standalone TagBox component. You can refer to the [Getting Started with TagBox](https://js.devexpress.com/Documentation/Guide/UI_Components/TagBox/Getting_Started_with_TagBox/) article to find out if the TagBox is the right choice for you.
 
 To implement the UI shown above, follow these steps:
 
@@ -20,7 +20,7 @@ To implement the UI shown above, follow these steps:
 You can find detailed instructions in the following help topic: [DropDownBox - Synchronize with the Embedded Element](https://js.devexpress.com/Documentation/Guide/UI_Components/DropDownBox/Synchronize_with_the_Embedded_Element/)
 
 1. **Integrate the TagBox with the DropDownBox**        
-Configure the TagBox in the DropDownBox's [fieldTemplate](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#fieldTemplate). Bind the TagBox to the same [dataSource](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#dataSource) used by the DropDownBox and TreeView, and specify the [valueExpr](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#valueExpr) and [displayExpr](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#displayExpr) properties. Set the TagBox's [value](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#value) to be the **value** of the DropDownBox and implement the [onValueChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#onValueChanged) event handler to synchronize the TagBox with the rest of the components. Other TagBox properties shown in the code below are optional.
+Use the DropDownBox.[fieldTemplate](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDropDownBox/Configuration/#fieldTemplate) option to configure custom content for the input field. Add a TagBox and bind it to the same [dataSource](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#dataSource) used by the DropDownBox and TreeView. Specify the [valueExpr](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#valueExpr) and [displayExpr](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#displayExpr) properties. Set TagBox.[value](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#value) to the **value** of the DropDownBox and implement the [onValueChanged](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxTagBox/Configuration/#onValueChanged) event handler to synchronize the TagBox with other components. Additional TagBox properties shown in the code below are optional.
 
     ```js
     const dropDownBox = $("#treeBox").dxDropDownBox({
